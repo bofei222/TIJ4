@@ -1,4 +1,4 @@
-package com.io.test;
+package com.io.nio;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,12 +6,13 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.util.Random;
 
-public class ChannelDemo {
+public class ChannelTest {
+
     public static void main(String[] args) throws IOException {
-        File file = new File("nio-data.txt");
-        if (!file.exists())
-            file.createNewFile();
+        File file = new File("D:\\bofei\\test\\nio-data3.txt");
         RandomAccessFile aFile = new RandomAccessFile(file, "rw");
         FileChannel inChannel = aFile.getChannel();
          
