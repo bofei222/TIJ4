@@ -1,5 +1,6 @@
 package com.io.nio;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.*;
 import org.junit.Test;
 
@@ -22,12 +23,24 @@ public class BuffTest {
         try {
             FileChannel fileChannel = new RandomAccessFile(new File("C:\\test\\0777\\zxcvbnm"), "rw").getChannel();
             // 写
-            byte[] data = new byte[3];
-            long position = 10L;
+            int p2 = 4;
+
+            byte[] data = RandomStringUtils.randomAlphabetic(p2).getBytes();
+            long position = 2L;
+            ByteBuffer wrap = ByteBuffer.wrap(data);
+
+            System.out.println(wrap.position());
             //指定 position 写入 4kb 的数据
-            fileChannel.write(ByteBuffer.wrap(data), position);
-            //从当前文件指针的位置写入 4kb 的数据
-            fileChannel.write(ByteBuffer.wrap(data));
+            fileChannel.write(wrap, position);
+//            从当前文件指针的位置写入 4kb 的数据
+//            int write = fileChannel.write(wrap);
+            System.out.println(wrap.position());
+//            wrap.compact();
+            wrap.clear();
+            int write1 = fileChannel.write(wrap, 6);
+            System.out.println(write1);
+
+            System.out.println(new String(wrap.array()));
         } catch (IOException e) {
             e.printStackTrace();
         }
