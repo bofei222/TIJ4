@@ -12,11 +12,11 @@ import java.util.Random;
 public class ChannelTest {
 
     public static void main(String[] args) throws IOException {
-        File file = new File("D:\\bofei\\test\\nio-data3.txt");
+        File file = new File("C:\\test\\0777\\zxcvbnm");
         RandomAccessFile aFile = new RandomAccessFile(file, "rw");
         FileChannel inChannel = aFile.getChannel();
          
-        ByteBuffer buf = ByteBuffer.allocate(48);
+        ByteBuffer buf = ByteBuffer.allocate(4 * 1024);
         int bytesRead = inChannel.read(buf);
         while (bytesRead != -1) {
         System.out.println("Read " + bytesRead);
