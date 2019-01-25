@@ -4,7 +4,9 @@ package com.io.nio;
 import org.junit.Test;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -17,23 +19,36 @@ public class RandomString {
 
     @Test
     public void givenUsingPlainJava_whenGeneratingRandomStringUnbounded_thenCorrect() throws IOException {
-//        byte[] array = new byte[1024*1024]; // length is bounded by 7
-//        new Random().nextBytes(array);
-        int a = new Random().nextInt();
-        System.out.println(a);
-//        long l = new Random().nextLong();
-//        System.out.println(l);
-//        String generatedString = new String(array, Charset.forName("UTF-8"));
-
-        File file = new File("D:\\bofei\\test\\nio-data3.txt");
-        OutputStream os = new FileOutputStream(file);
-        BufferedOutputStream bos = new BufferedOutputStream(os);
-        for (int i = 0; i < 10 * 1024 * 1024; i++) {
-            bos.write(a);
-        }
-
+        byte[] array = new byte[32]; // length is bounded by 7
+        new Random().nextBytes(array);
+//        0123 12131 12351 1231 1233 12341
+        String s = "一";
+        String s2 = "a";
+        String s3 = "!";
+        String s4 = "1";
+        byte b5 = 41;
+        char c = (char) b5; // c = ')' ASCII
+        byte b6 = 49;
+        char c2 = (char) b6; // c2 = '1' ASCII
+        byte[] b = s.getBytes();
+        byte[] b2 = s2.getBytes();
+        byte[] b3 = s3.getBytes();
+        byte[] b4 = s4.getBytes();
+        System.out.println(Arrays.toString(b));
+        System.out.println(Arrays.toString(b4));
+        System.out.println(new String(b4));
+        System.out.println();
+//        String generatedString = new String(bytes);
 //        System.out.println(generatedString);
+//        System.out.println(new String(array));
+//
+
+//        OutputStream os = new FileOutputStream("C:\\test\\0777\\zxcvbnm");
+//        os.write(array);
+//        os.close();
+
     }
+
     @Test
     public void givenUsingPlainJava_whenGeneratingRandomStringBounded_thenCorrect() {
 
