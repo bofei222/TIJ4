@@ -32,16 +32,25 @@ public class Maps {
         print("map.containsKey(11): " + map.containsKey(11));
         print("map.get(11): " + map.get(11));
         print("map.containsValue(\"F0\")" + map.containsValue("F0"));
-
-
+        Integer key = map.keySet().iterator().next();
+        print("First key in map: " + key);
+        map.remove(key);
+        printKeys(map);
+        map.clear();
+        print("map.isEmpty(): " + map.isEmpty());
+        map.putAll(new CountingMapData(25));
+        //
+        map.keySet().removeAll(map.keySet());
+        print("map.isEmpty(): " + map.isEmpty());
     }
 
     public static void main(String[] args) {
         test(new HashMap<Integer,String>());
+        System.out.println("----------------------------------------------");
         test(new TreeMap<Integer,String>());
-        test(new LinkedHashMap<Integer,String>());
-        test(new IdentityHashMap<Integer,String>());
-        test(new ConcurrentHashMap<Integer,String>());
-        test(new WeakHashMap<Integer,String>());
+//        test(new LinkedHashMap<Integer,String>());
+//        test(new IdentityHashMap<Integer,String>());
+//        test(new ConcurrentHashMap<Integer,String>());
+//        test(new WeakHashMap<Integer,String>());
     }
 }
