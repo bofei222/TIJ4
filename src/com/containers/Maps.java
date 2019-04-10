@@ -46,6 +46,8 @@ public class Maps {
 
     public static void main(String[] args) {
         test(new HashMap<Integer,String>());
+        HashMap<Object, Object> map = new HashMap<>();
+        map.hashCode();
         System.out.println("----------------------------------------------");
         test(new TreeMap<Integer,String>());
 //        test(new LinkedHashMap<Integer,String>());

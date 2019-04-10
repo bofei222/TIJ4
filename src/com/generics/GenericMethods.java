@@ -1,7 +1,7 @@
 package com.generics;
 
 public class GenericMethods {
-	public <T> void f(T x){
+	public <T> void f(T x) {
 		System.out.println(x.getClass().getName());
 	}
 	public static void main(String[] args) {
